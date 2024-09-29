@@ -1,5 +1,5 @@
 package com.room_db_export_import
 
-fun test(): Int {
+fun testFoo(): Int {
     return 2+3
 }
