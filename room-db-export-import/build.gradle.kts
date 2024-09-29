@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.room_db_export_import"
+    namespace = "com.roomdbexportimport"
     compileSdk = 34
 
     defaultConfig {
@@ -17,7 +17,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -43,7 +43,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "com.github.dessalines"
                 artifactId = "room-db-export-import"
-                version = "0.0.5"
+                version = "0.0.6"
                 from(components["release"])
             }
         }

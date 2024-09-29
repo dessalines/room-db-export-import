@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.room_db_export_import"
+    namespace = "com.roomdbexportimportapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.room_db_export_import"
+        applicationId = "com.roomdbexportimportapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -43,4 +43,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(project(":room-db-export-import"))
 }

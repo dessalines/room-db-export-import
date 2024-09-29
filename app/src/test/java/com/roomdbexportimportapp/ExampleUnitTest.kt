@@ -1,4 +1,4 @@
-package com.room_db_export_import
+package com.roomdbexportimportapp
 
 import org.junit.Test
 

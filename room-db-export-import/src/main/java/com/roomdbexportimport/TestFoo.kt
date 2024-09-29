@@ -1,4 +1,4 @@
-package com.room_db_export_import
+package com.roomdbexportimport
 
 fun testFoos(): Int {
     return 25
