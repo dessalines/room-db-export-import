@@ -34,6 +34,9 @@ val exportDbLauncher =
         }
     }
 ...
+onClick = {
+    exportDbLauncher.launch("EXPORT_FILENAME")
+}
 ```
 
 To import:
@@ -50,6 +53,10 @@ val importDbLauncher =
             }
         }
     }
+...
+onClick = {
+    importDbLauncher.launch(arrayOf("application/zip"))
+}
 
 ```
 
