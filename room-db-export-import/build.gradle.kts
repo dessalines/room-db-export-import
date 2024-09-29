@@ -49,7 +49,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "com.github.dessalines"
                 artifactId = "room-db-export-import"
-                version = "0.0.2"
+                version = "0.0.3"
                 from(components["release"])
             }
         }
