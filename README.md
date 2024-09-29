@@ -1,8 +1,10 @@
 <div align="center">
+
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/dessalines/room-db-export-import.svg)
 [![GitHub issues](https://img.shields.io/github/issues-raw/dessalines/rank-my-favs.svg)](https://github.com/dessalines/room-db-export-import/issues)
 [![License](https://img.shields.io/github/license/dessalines/room-db-export-import.svg)](LICENSE)
 ![GitHub stars](https://img.shields.io/github/stars/dessalines/room-db-export-import?style=social)
+
 </div>
 
 # Room-DB-Export-Import
