@@ -34,7 +34,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.annotation.jvm)
 
+    // Zipping
+    implementation(libs.zip4j)
+
+    implementation(libs.androidx.room.runtime)
 }
 
 afterEvaluate {
@@ -43,7 +48,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "com.github.dessalines"
                 artifactId = "room-db-export-import"
-                version = "0.0.6"
+                version = "0.1.0"
                 from(components["release"])
             }
         }
