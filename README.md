@@ -13,7 +13,7 @@ This library provides an easy way to import and export your jetpack compose app'
 
 ## Usage
 
-Add the dependency to your app's `build.gradle`:
+Add the dependency to your app's `build.gradle` :
 
 `implementation 'com.github.dessalines:room-db-export-import:VERSION'`
 
