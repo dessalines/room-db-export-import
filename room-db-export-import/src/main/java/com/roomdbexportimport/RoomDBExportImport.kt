@@ -8,7 +8,6 @@ import androidx.annotation.RequiresApi
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import net.lingala.zip4j.ZipFile
 import java.io.File
-import java.io.IOException
 import java.nio.file.Files
 import kotlin.system.exitProcess
 
@@ -25,21 +24,24 @@ class RoomDBExportImport(
     fun export(
         ctx: Context,
         backupFileUri: Uri,
-    ) {
-        try {
+    ): Result<Unit> =
+        runCatching {
             val dbFiles = dbFiles()
             checkpoint()
 
             // Create a backup zip file
-            ZipFile(dbFiles.backupZipFile).addFiles(listOf(dbFiles.dbFile, dbFiles.walFile, dbFiles.shmFile))
+            ZipFile(dbFiles.backupZipFile).addFiles(
+                listOf(
+                    dbFiles.dbFile,
+                    dbFiles.walFile,
+                    dbFiles.shmFile,
+                ),
+            )
 
             // Copy the tmp file to the other one
             val os = ctx.contentResolver.openOutputStream(backupFileUri)!!
             Files.copy(dbFiles.backupZipFile?.toPath(), os)
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
-    }
 
     /**
      * Imports a database from a zip file
@@ -49,8 +51,8 @@ class RoomDBExportImport(
         ctx: Context,
         backupFileUri: Uri,
         restart: Boolean = true,
-    ) {
-        try {
+    ): Result<Unit> =
+        runCatching {
             val dbFiles = dbFiles()
 
             // Delete the backup zip file first
@@ -68,17 +70,14 @@ class RoomDBExportImport(
             // Extract them
             ZipFile(dbFiles.backupZipFile).extractAll(dbFiles.dbFile.parent!!)
             checkpoint()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
 
-        if (restart) {
-            val i = ctx.packageManager.getLaunchIntentForPackage(ctx.packageName)
-            i!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            ctx.startActivity(i)
-            exitProcess(0)
+            if (restart) {
+                val i = ctx.packageManager.getLaunchIntentForPackage(ctx.packageName)
+                i!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                ctx.startActivity(i)
+                exitProcess(0)
+            }
         }
-    }
 
     private fun checkpoint() {
         val db = db.writableDatabase
