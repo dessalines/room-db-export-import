@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.roomdbexportimport"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 21
@@ -20,7 +20,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -32,7 +32,6 @@ android {
     publishing {
         singleVariant("release") {}
     }
-
 }
 
 kotlin {
